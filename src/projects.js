@@ -16,3 +16,7 @@ class CreateProject {
 const addProjectToArray = (name) => {
    projects.push(new CreateProject(name));
 }
+
+addProjectToArray('default');
+
+export {addProjectToArray, projects};

@@ -3,9 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <title>ToDo List</title>
 </head>
 <body>
-    
+    <header>
+        <span class="material-icons icon-large">add_task</span>
+        <h1>ToDo List</h1>
+    </header>
+    <div class="side-bar">
+        <button class="all">All</button>
+        <button class="today"><span class="material-icons">today</span>Today</button>
+        <button class="week"><span class="material-icons">date_range</span> Week</button>
+        <button class="month"><span class="material-icons">calendar_month</span> Month</button>
+        <button class="important"><span class="material-icons">bookmark</span> Important</button>
+        <br>
+        <button class="new-project">New Project</button>
+        <button class="new-todo">New ToDo</button>
+    </div>
+    <div class="container"></div>
+    <dialog closedby="any">
+        <label for="name">Name:</label>
+        <input id="name" required>
+        <button>Submit</button>
+    </dialog>
 </body>
 </html>

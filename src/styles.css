@@ -1,0 +1,61 @@
+@font-face {
+    font-family: 'ComicRelief';
+    src: url(https://github.com/Ashleylq/todo-list/raw/main/ComicRelief-Regular.ttf);
+}
+
+* {
+    font-family: 'ComicRelief', sans-serif;
+}
+
+body > * {
+    margin : 0;
+}
+
+body {
+    display : grid;
+    grid-template-columns: 1fr 4fr;
+    grid-template-rows: 1fr 5fr;
+}
+
+.icon-large {
+    font-size : 64px;
+    color : lightgreen;
+}
+
+.material-icons, 
+.material-icons + * {
+    vertical-align: middle;
+}
+
+header {
+    text-align: center;
+    border-bottom : 3px solid green;
+    padding-top: 10px;
+}
+
+header > h1 {
+    display : inline;
+    color : lightgreen;
+}
+
+.side-bar {
+    grid-column : 1;
+    grid-row : 1/ span 2;
+    background-color : lightgreen;
+}
+
+.side-bar > button {
+    display : block;
+    margin : 40px auto;
+    width : 70%;
+    border : none;
+    height : 35px;
+    font-size: 1rem;
+    font-weight: 700;
+    color : black;
+    background-color: turquoise;
+}
+
+.container {
+    padding : 10px
+}
