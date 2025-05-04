@@ -1,61 +1,143 @@
 @font-face {
-    font-family: 'ComicRelief';
-    src: url(https://github.com/Ashleylq/todo-list/raw/main/ComicRelief-Regular.ttf);
-}
-
-* {
-    font-family: 'ComicRelief', sans-serif;
-}
-
-body > * {
-    margin : 0;
-}
-
-body {
-    display : grid;
-    grid-template-columns: 1fr 4fr;
-    grid-template-rows: 1fr 5fr;
-}
-
-.icon-large {
-    font-size : 64px;
-    color : lightgreen;
-}
-
-.material-icons, 
-.material-icons + * {
-    vertical-align: middle;
-}
-
-header {
-    text-align: center;
-    border-bottom : 3px solid green;
-    padding-top: 10px;
-}
-
-header > h1 {
-    display : inline;
-    color : lightgreen;
-}
-
-.side-bar {
-    grid-column : 1;
-    grid-row : 1/ span 2;
-    background-color : lightgreen;
-}
-
-.side-bar > button {
-    display : block;
-    margin : 40px auto;
-    width : 70%;
-    border : none;
-    height : 35px;
-    font-size: 1rem;
-    font-weight: 700;
-    color : black;
-    background-color: turquoise;
+  font-family: "ComicRelief";
+  src: url(https://github.com/Ashleylq/todo-list/raw/main/ComicRelief-Regular.ttf);
 }
 
 .container {
-    padding : 10px
+  position: relative;
+}
+
+* {
+  font-family: "ComicRelief", sans-serif;
+}
+
+body > * {
+  margin: 0;
+}
+
+body {
+  display: grid;
+  grid-template-columns: 1fr 4fr;
+  grid-template-rows: 1fr 5fr;
+  position: relative;
+}
+
+.icon-large {
+  font-size: 64px;
+  color: lightgreen;
+}
+
+.material-icons,
+.material-icons + * {
+  vertical-align: middle;
+}
+
+header {
+  text-align: center;
+  border-bottom: 3px solid green;
+  padding-top: 10px;
+}
+
+header > h1 {
+  display: inline;
+  color: lightgreen;
+}
+
+.side-bar {
+  grid-column: 1;
+  grid-row: 1 / span 2;
+  background-color: lightgreen;
+}
+
+.side-bar > button {
+  margin: 40px auto;
+  width: 70%;
+  height: 35px;
+}
+
+h3 {
+  text-align : center;
+}
+
+button {
+  display: block;
+  border: none;
+  font-size: 1rem;
+  font-weight: 700;
+  color: black;
+  background-color: turquoise;
+}
+
+dialog {
+  border: 1px solid black;
+  position: absolute;
+  top: 250px;
+  left: 400px;
+}
+
+form > * {
+  margin: 10px;
+}
+
+.project-container {
+  padding: 20px;
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  grid-auto-flow: column;
+}
+
+.project-container > div {
+  background-color: rgb(245, 245, 255);
+  font-weight: bold;
+  text-align: center;
+  line-height: 170px;
+  vertical-align: middle;
+  width: 200px;
+  height: 200px;
+  flex-grow: 1;
+}
+
+dialog, 
+.project-container > div,
+.expand-card {
+  box-shadow: 5px 5px 5px grey;
+}
+
+.todo-card {
+  display : flex;
+  justify-content: space-between;
+}
+
+.expand-card {
+  width : 200px;
+  position : absolute;
+  top : 100px;
+  left : 250px;
+  text-align : center;
+  padding : 10px;
+  border : 2px solid black;
+}
+
+.expand-card button {
+  margin : auto;
+}
+
+.close {
+  font-size : 16px;
+  position : absolute;
+  left : 0px;
+  top : 0px;
+}
+
+.delete-button {
+  background-color : red;
+  color : white;
+  margin : 0px 10px;
+}
+
+.bookmark {
+  position : absolute;
+  top : 0px;
+  right : 0px;
 }
