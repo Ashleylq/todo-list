@@ -3,9 +3,7 @@ import * as domModule from "./dom";
 
 domModule.renderProjects();
 
-document.querySelector(".new-project").addEventListener("click", () => {
-  domModule.openProjectDialog();
-});
+document.querySelector(".new-project").addEventListener("click", () => { domModule.openProjectDialog() });
 
 document.querySelector(".project-dialog > form").addEventListener("submit", (event) => {
   event.preventDefault();
@@ -14,9 +12,7 @@ document.querySelector(".project-dialog > form").addEventListener("submit", (eve
   domModule.submitProjectDialog(newName);
 });
 
-document.querySelector(".new-todo").addEventListener("click", () => {
-  domModule.openTodoDialog();
-});
+document.querySelector(".new-todo").addEventListener("click", () => { domModule.openTodoDialog() });
 
 document.querySelector(".todo-dialog > form").addEventListener("submit", (event) => {
   event.preventDefault();
@@ -27,3 +23,9 @@ document.querySelector(".todo-dialog > form").addEventListener("submit", (event)
 document.querySelector(".all").addEventListener("click", () => {domModule.renderProjects()})
 
 document.querySelector(".important").addEventListener("click", () => {domModule.renderImportant()})
+
+document.querySelector('.today').addEventListener("click", () => {domModule.renderToday()})
+
+document.querySelector('.week').addEventListener("click", () => {domModule.renderThisWeek()})
+
+document.querySelector('.month').addEventListener("click", () => {domModule.renderThisMonth()})

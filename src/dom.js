@@ -76,7 +76,8 @@ const renderTodos = (list) => {
     const title = document.createElement("span");
     title.textContent = todo["title"];
     const date = document.createElement("span");
-    date.textContent = todo["dueDate"];
+    const dueDate = todo["dueDate"].toLocaleDateString();
+    date.textContent = dueDate;
     container.appendChild(todoCard);
     todoCard.addEventListener('click', () => {
       expandTodo(todo)
@@ -154,7 +155,8 @@ const openTodoDialog = () => {
 
 const submitTodoDialog = (formdata) => {
   const newTitle = formdata.get("title");
-  const newDate = new Date(formdata.get("date")).toLocaleDateString();
+  const newDate = new Date(formdata.get("date"));
+  newDate.setHours(0, 0, 0, 0);
   const notes = formdata.get("notes");
   const priority = formdata.get("priority");
   const project = formdata.get("project");
@@ -171,6 +173,21 @@ const renderImportant = () => {
   renderTodos(important);
 }
 
+const renderToday = () => {
+  const today = projectModule.findToday();
+  renderTodos(today)
+}
+
+const renderThisWeek = () => {
+  const thisWeek = projectModule.findThisWeek();
+  renderTodos(thisWeek);
+}
+
+const renderThisMonth = () => {
+  const thisMonth = projectModule.findThisMonth();
+  renderTodos(thisMonth);
+}
+
 export {
   deleteAllChildren,
   openProjectDialog,
@@ -179,4 +196,7 @@ export {
   openTodoDialog,
   submitTodoDialog,
   renderImportant,
+  renderToday,
+  renderThisWeek,
+  renderThisMonth,
 };

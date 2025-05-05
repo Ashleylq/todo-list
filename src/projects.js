@@ -1,3 +1,5 @@
+import { isToday, isThisWeek, isThisMonth } from "date-fns";
+
 let projects = [];
 
 class CreateProject {
@@ -38,12 +40,39 @@ const removeProject = (projectName) => {
 }
 
 const returnImportant = () => {
-  const important = [];
+  let important = [];
   for(let project of projects){
     let projectImportant = project.todoList.filter((el) => el.important === true);
     important.push(...projectImportant);
   }
   return important;
+}
+
+const findToday = () => {
+  let today = [];
+  for (let project of projects){
+    let projectToday = project.todoList.filter((el) => isToday(el.dueDate));
+    today.push(...projectToday);
+  }
+  return today;
+}
+
+const findThisWeek = () => {
+  let thisWeek = [];
+  for (let project of projects){
+    let projectThisWeek = project.todoList.filter((el) => isThisWeek(el.dueDate));
+    thisWeek.push(...projectThisWeek)
+  }
+  return thisWeek;
+}
+
+const findThisMonth = () => {
+  let thisMonth = [];
+  for (let project of projects){
+    let projectThisMonth = project.todoList.filter((el) => isThisMonth(el.dueDate));
+    thisMonth.push(...projectThisMonth);
+  }
+  return thisMonth;
 }
 
 addProjectToArray("Default");
@@ -54,4 +83,7 @@ export { addProjectToArray,
    removeTodo, 
    removeProject, 
    returnImportant,
+   findToday,
+   findThisWeek,
+   findThisMonth,
   };
