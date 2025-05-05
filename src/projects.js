@@ -2,6 +2,21 @@ import { isToday, isThisWeek, isThisMonth } from "date-fns";
 
 let projects = [];
 
+const localStorageGet = function() {
+  projects = [];
+  if (localStorage.getItem("projectArray")){
+    const json = localStorage.getItem("projectArray");
+    let localProjects = JSON.parse(json);
+    for(let project of localProjects){
+      for(let todo of project.todoList){
+        todo.dueDate = new Date(todo.dueDate);
+        todo.dueDate.setHours(0, 0, 0, 0);
+      }
+     }
+    projects.push(...localProjects);
+  }
+}
+
 class CreateProject {
   constructor(name) {
     this.name = name;
@@ -11,6 +26,7 @@ class CreateProject {
 
 const addProjectToArray = (name) => {
   projects.push(new CreateProject(name));
+  localStorage.setItem("projectArray", JSON.stringify(projects));
 };
 
 const createTodo = function (projectName, title, notes, priority, dueDate, important) {
@@ -27,16 +43,19 @@ const addTodoToArray = function (
   projects[projectIndex].todoList.push(
     createTodo(projects[projectIndex]["name"], title, notes, priority, dueDate, false),
   );
+  localStorage.setItem("projectArray", JSON.stringify(projects));
 };
 
 const removeTodo = function(todoName, projectIndex){
   const todoIndex = projects[projectIndex].todoList.map((e) => e.name).indexOf(todoName);
   projects[projectIndex].todoList.splice(todoIndex, 1);
+  localStorage.setItem("projectArray", JSON.stringify(projects));
 }
 
 const removeProject = (projectName) => {
   const projectIndex = projects.map((e) => e.name).indexOf(projectName);
   projects.splice(projectIndex, 1);
+  localStorage.setItem("projectArray", JSON.stringify(projects));
 }
 
 const returnImportant = () => {
@@ -86,4 +105,5 @@ export { addProjectToArray,
    findToday,
    findThisWeek,
    findThisMonth,
+   localStorageGet
   };

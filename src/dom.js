@@ -46,7 +46,7 @@ const expandTodo = (todo) => {
   const note = document.createElement('p');
   note.textContent = todo["notes"];
   const date = document.createElement('p');
-  date.textContent = todo["dueDate"];
+  date.textContent = todo["dueDate"].toLocaleDateString();
   const deleteButton = document.createElement('button');
   deleteButton.textContent = 'Delete';
   deleteButton.addEventListener('click', () => {
@@ -110,12 +110,17 @@ const renderProjects = () => {
   for (let project of projectModule.projects) {
     const card = document.createElement("div");
     card.textContent = project["name"];
-    card.addEventListener("click", () => {
-      renderTodos(project["todoList"]);
+    card.addEventListener("click", (e) => {
+      if(!deleteButton.contains(e.target)){
+        renderTodos(project["todoList"]);
+      }
     });
     const deleteButton = document.createElement('button');
     deleteButton.textContent = "Delete";
-    deleteButton.addEventListener('click', () => {projectModule.removeProject(project["name"])} )
+    deleteButton.addEventListener('click', () => {
+      projectModule.removeProject(project["name"]);
+      renderProjects();
+    } )
     deleteButton.setAttribute('class', 'delete-button');
     container.appendChild(card);
     card.appendChild(deleteButton);
