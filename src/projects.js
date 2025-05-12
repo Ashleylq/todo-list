@@ -3,7 +3,6 @@ import { isToday, isThisWeek, isThisMonth } from "date-fns";
 let projects = [];
 
 const localStorageGet = function() {
-  projects = [];
   if (localStorage.getItem("projectArray")){
     const json = localStorage.getItem("projectArray");
     let localProjects = JSON.parse(json);
@@ -13,7 +12,10 @@ const localStorageGet = function() {
         todo.dueDate.setHours(0, 0, 0, 0);
       }
      }
-    projects.push(...localProjects);
+    projects = localProjects;
+  }
+  else {
+    addProjectToArray('default');
   }
 }
 
@@ -24,7 +26,7 @@ class CreateProject {
   todoList = [];
 }
 
-const addProjectToArray = (name) => {
+function addProjectToArray(name){
   projects.push(new CreateProject(name));
   localStorage.setItem("projectArray", JSON.stringify(projects));
 };
@@ -94,7 +96,7 @@ const findThisMonth = () => {
   return thisMonth;
 }
 
-addProjectToArray("Default");
+localStorageGet();
 
 export { addProjectToArray, 
    addTodoToArray,

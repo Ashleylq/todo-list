@@ -2,7 +2,6 @@ import "./styles.css";
 import * as domModule from "./dom";
 import { localStorageGet } from "./projects";
 
-localStorageGet();
 domModule.renderProjects();
 
 document.querySelector(".new-project").addEventListener("click", () => { domModule.openProjectDialog() });
